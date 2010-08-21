@@ -1,0 +1,39 @@
+<% form_remote_for(@yacht,:url=>updateyachtbasicinfo_path(@yacht.id),:update=>'div_yachtbasicinfo',:loading => visual_effect(:Highlight, 'div_yachtbasicinfo', :duration => 3 ), :complete => visual_effect(:appear, 'div_yachtbasicinfo', :duration => 1), :failure => "alert('You can not add this inventory. Adding Failed.')"  ) do %>
+<table width="374" border="0" cellspacing="5" cellpadding="0">
+	    <tr>
+	      <td width="134" class="profile-labeltxt">Name</td>
+	      <td width="250" class="details-green-bigtxt">
+   	      <%= text_field :yacht,:name,:class => "profile-label"%>
+	      </td>
+	    </tr>
+	    <tr>
+	      <td  class="profile-labeltxt">Year, Make</td>
+	      <td class="details-blue-txt">
+	        <%= text_field :yacht,:making_year,:class => "profile-label"%>
+	        
+	      </td>
+	    </tr>
+	    <tr>
+	      <td  class="profile-labeltxt">Model</td>
+	      <td class="details-blue-txt">
+	        <%= text_field :yacht,:model,:class => "profile-label"%>      
+	      </td>
+	    </tr>
+	    <tr>
+	      <td  class="profile-labeltxt">Location</td>
+	      <td class="details-blue-txt">
+	        <%= text_field :yacht,:city,:class => "profile-small-label"%>&nbsp;&nbsp;&nbsp;<%= text_field :yacht,:state,:class => "profile-small-label"%>&nbsp;&nbsp;&nbsp;<%= text_field :yacht,:country,:class => "profile-small-label"%>
+	      <td>
+	    </tr>
+	    <tr>
+	      <td class="details-redtxt">Asking Price</td>
+	      <td class="details-redtxt">
+	        <%= text_field :yacht,:price,:class => "profile-label"%>
+	      </td>
+	    </tr>
+	         
+	    <tr>
+	      <td align="right" colspan="2" class="details-redtxt"><%= image_submit_tag "/images/save01.jpg", :width=>"56", :height=>"24", :border=>"0" %></td>
+		 </tr>
+    </table>
+<% end %>

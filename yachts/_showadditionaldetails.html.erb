@@ -1,0 +1,8 @@
+<table width="100%">
+  <tr>
+    <td align="left" valign="top" class="normal-content"><%= Additionaldetail.find(id).description %></td>
+  </tr>
+  <tr>
+    <td align="right" valign="top" class="normal-content"><%= link_to_remote image_tag('/images/edit01.jpg',:alt=>'Edit',:title=> "Edit",:border=>"0"),:url=>editadditionaldetails_path(id),:update=>"divadditionaldetails_#{id}",:loading => visual_effect(:Highlight, "divadditionaldetails_#{id}", :duration => 3 ), :complete => visual_effect(:appear, "divadditionaldetails_#{id}", :duration => 1), :failure => "alert('You can not add this inventory. Adding Failed.')" %></td>
+  </tr>
+</table>

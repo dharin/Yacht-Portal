@@ -1,0 +1,95 @@
+
+<table width="210" border="0" cellspacing="3" cellpadding="0">
+          <tr>
+            <td colspan="2" align="left" valign="middle">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="127" align="left" valign="middle" class="gray-label-txt">Vessel Name </td>
+            <% if not @details.name.blank? %><td width="74" align="left" valign="middle" class="gray-label-txt"><%= @details.name %></td><% end %>
+          </tr>
+          <tr>
+            <td width="127" align="left" valign="middle" class="gray-label-txt">Status </td>
+            <td width="74" align="left" valign="middle" class="gray-label-txt"><b><%= @details.status %></b></td>
+          </tr>
+          <tr>
+            <td width="127" align="left" valign="middle" class="gray-label-txt">Current Owner </td>
+            <% if not @details.owners_name.blank? %>
+              <td width="74" align="left" valign="middle" class="gray-label-txt">
+                <%= @details.owners_name %>
+              </td>
+            <% end %>
+          </tr>
+          
+          <tr>
+            <td width="127" align="left" valign="middle" class="gray-label-txt">Documentation No. </td>
+            <% if not @details.documentation_no.blank? %><td width="74" align="left" valign="middle" class="gray-label-txt"><%= @details.documentation_no %></td><% end %>
+          </tr>	            
+          
+          <tr>
+            <td width="127" align="left" valign="middle" class="gray-label-txt">Length </td>
+            <% if not @details.loa.blank? %><td width="74" align="left" valign="middle" class="gray-label-txt"><%= @details.loa %></td><% end %>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Beam</td>
+            <% if not @details.beam.blank? %><td align="left" valign="middle" class="gray-label-txt"><%= @details.beam %></td><% end %>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Draft</td>
+            <% if not @details.draft.blank? %><td align="left" valign="middle" class="gray-label-txt"><%= @details.draft %></td><% end %>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Fuel Capacity</td>
+            <% if not @details.fuel.blank? %><td align="left" valign="middle" class="gray-label-txt"><%= @details.fuel %></td><% end %>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Water Capacity</td>
+            <% if not @details.water.blank? %><td align="left" valign="middle" class="gray-label-txt"><%= @details.water %></td><% end %>
+          </tr>
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Holding Capacity</td>
+            <% if not @details.holding_capacity.blank? %><td align="left" valign="middle" class="gray-label-txt"><%=@details.holding_capacity %></td><% end %>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Cruising Speed</td>
+            <% if not @details.crusing_speed.blank? %><td align="left" valign="middle" class="gray-label-txt"><%= @details.crusing_speed %></td><% end %>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Maximum Speed </td>
+            <% if not @details.max_speed.blank? %><td align="left" valign="middle" class="gray-label-txt"><%=@details.max_speed  %></td><% end %>
+          </tr>
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Engines Cummins</td>
+            <% if not @details.engine_commins.blank? %><td align="left" valign="middle" class="gray-label-txt"><%=@details.engine_commins %></td><% end %>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Total HP </td>
+            <% if not @details.total_hp.blank? %><td align="left" valign="middle" class="gray-label-txt"><%=@details.total_hp %></td><% end %>
+          </tr>
+         
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Cabins</td>
+             <% if not @details.cabins.blank? %><td align="left" valign="middle" class="gray-label-txt"><%=@details.cabins %></td><% end %>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Berths</td>
+            <% if not @details.berth.blank? %><td align="left" valign="middle" class="gray-label-txt"><%=@details.berth %></td><% end %>
+          </tr>
+          
+          <tr>
+            <td align="right" colspan="2" valign="middle" class="gray-label-txt"><%= link_to_remote image_tag('/images/edit01.jpg',:alt=>'Edit',:title=> "Edit",:border=>"0"),:url=>editspecification_path(@details.id),:loading => visual_effect(:Highlight, 'div_specification', :duration => 3 ), :complete => visual_effect(:appear, 'div_specification', :duration => 1), :failure => "alert('You can not add this inventory. Adding Failed.')" %></td>
+          </tr>
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">&nbsp;</td>
+            <td align="left" valign="middle" class="gray-label-txt">&nbsp;</td>
+          </tr>
+          
+          
+</table>

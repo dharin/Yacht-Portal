@@ -1,0 +1,28 @@
+<table width="374" border="0" cellspacing="5" cellpadding="0">
+	    
+	    <tr>
+	      <td width="134" class="details-blk-bigtxt">Name</td>
+	      <td width="250" class="details-green-bigtxt"><div id="div_name"><%= @details.name %></div></td>
+	    </tr>
+	    <tr>
+	      <td class="details-blk-txt">Year, Make</td>
+	      <td class="details-blue-txt"><%= @details.making_year %></td>
+	    </tr>
+	    <tr>
+	      <td class="details-blk-txt">Model</td>
+	      <td class="details-blue-txt"><%= @details.model %></td>
+	    </tr>
+	    <tr>
+	      <td class="details-blk-txt">Location</td>
+	      <td class="details-blue-txt"><%= @details.city %><%= @details.state %><%= @details.country %></td>
+	    </tr>
+	    <tr>
+	      <td class="details-redtxt">Asking Price</td>
+	      <td class="details-redtxt"><%= @details.price %></td>
+	    </tr>
+	            
+	    <tr>
+	      <td align="right" colspan="2" class="details-redtxt"><%= link_to_remote image_tag('/images/edit01.jpg',:alt=>'Edit',:title=> "Edit",:border=>"0"),:url=>edityachtbasicinfo_path(@details.id),:loading => visual_effect(:Highlight, 'div_yachtbasicinfo', :duration => 3 ), :complete => visual_effect(:appear, 'div_yachtbasicinfo', :duration => 1), :failure => "alert('You can not add this inventory. Adding Failed.')"  %></td>
+		 </tr>
+    </table>
+    

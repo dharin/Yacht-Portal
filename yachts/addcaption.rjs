@@ -1,0 +1,6 @@
+page.replace_html "txtgalleries_"+params[:id], :partial => 'captiontext', :locals=>{:id=>params[:id],:caption=>@caption}
+page.hide "div_gallery_"+params[:id]
+page.show "txtgalleries_"+params[:id]
+page.hide "overlay"
+page.hide "indicator"
+page.field.focus "gallery_caption_"+params[:id]

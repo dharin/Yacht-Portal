@@ -1,0 +1,14 @@
+<% form_remote_for(@additionaldetail,:url=>updateadditionaldetails_path(@additionaldetail.id),:update=>"divadditionaldetails_#{@additionaldetail.id}",:loading => visual_effect(:Highlight, "divadditionaldetails_#{@additionaldetail.id}", :duration => 3 ), :complete => visual_effect(:appear, "divadditionaldetails_#{@additionaldetail.id}", :duration => 1), :failure => "alert('You can not add this inventory. Adding Failed.')"  ) do %>
+<table width="100%">
+  <tr>
+    <td align="left" valign="top" class="normal-content"><%= text_area :additionaldetail,:description,:rows=>"3",:cols=>"85" %></td>
+  </tr>
+  <tr>
+    <td align="right" valign="top" class="normal-content"><%= image_submit_tag "/images/save01.jpg", :width=>"56", :height=>"24", :border=>"0" %></td>
+  </tr>
+</table>
+<% end %>
+
+
+  
+  

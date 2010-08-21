@@ -1,0 +1,64 @@
+
+<table width="650" border="0" cellspacing="0" cellpadding="0">
+   
+	<tr>
+	  <td style="height:300px;" align="center" valign="middle"><table width="650" border="0" cellspacing="0" cellpadding="0">
+	   
+	    <tr>
+	      <td align="left" valign="middle" class="yachtlist-page-no"><div id="thumbnails">
+	        <ul style="list-style-image:none;list-style-position:outside;list-style-type:none;margin:0pt;padding:0pt;line-height:120%">
+					<% for galleries in @details.galleries %>
+	  				<li style="float:left;height:190px;margin:0px 5px 10px 0px;padding:0px;position:relative;width:178px;font-family:Arial,Helvetica,sans-serif;font-size:13px;" onMouseOver="document.getElementById('spangalleryicon_<%= galleries.id.to_s %>').style.display='';" onMouseOut="document.getElementById('spangalleryicon_<%= galleries.id.to_s %>').style.display='none';">
+	  				  <table border="0" cellspacing="0" cellpadding="0" >
+	  				    <tr>
+	  				      <td height="25" style="vertical-align:middle;" align="center">
+	  				      <% if galleries.caption.blank? %>
+	  				        <div style="height:25px;text-align:center;" class="search-blacktxt" id="div_gallery_<%= galleries.id %>"><%= link_to_remote "add caption",:url =>{ :action => 'addcaption', :controller=>'yachts'}, :loading=>"$('indicator').style.display='';$('overlay').style.display='';", :with => "'id=#{galleries.id}&caption=#{galleries.caption}'" %></div>
+	  				      <% else %>
+  				           <div style="height:25px;text-align:center;" class="search-blacktxt" id="div_gallery_<%= galleries.id %>">
+  				           <%= link_to_remote galleries.caption, :loading=>"$('indicator').style.display='';$('overlay').style.display='';", :url =>{:action => 'addcaption', :controller=>'yachts'}, :failure=>"alert('add/edit caption failed!');", :with => "'id=#{galleries.id}&caption=#{galleries.caption}'" %></div>
+	  				      <% end %>
+	  				      <div id="txtgalleries_<%= galleries.id %>" style="display:none"></div>
+	  				      </td>
+	  				    </tr>
+	  				    <tr>
+	  				      <td align="center" height="140">
+				         <% if galleries.id == session[:pimage]%>
+				            <div id="primary_symbol_<%= galleries.id %>" style="position:absolute;display:'';"><%= image_tag('/images/right-mark.png', :style=>"width:30px;margin-left:-8px;margin-top:-8px;") %></div>
+				         <% else %>
+				            <div id="primary_symbol_<%= galleries.id %>" style="position:absolute;display:none"><%= image_tag('/images/right-mark.png', :style=>"width:30px;margin-left:-8px;margin-top:-8px;") %></div>
+				         <% end %>
+					        <%= image_tag showmediumimage_path(galleries.id), :style=>"width:170px;margin: 5px; opacity: 1;" %>
+					      </td>
+                   </tr>
+	  				    <tr>
+	  				      <td style="vertical-align:middle;" align="center" height="25" >
+  	  				      <div style="width:170px;background-color:#F7F7F7;">
+  	  				      <%= render :partial => '/yachts/previewgalleryicon', :locals=>{:galleryid=>galleries.id} %>
+  	  				      </div>
+	  				      </td>
+	  				    </tr>
+					    </table>
+					  </li>
+					<% end %>
+					</ul>
+					<%- if session[:pimage].blank? -%><div id="primary_symbol_" style="display:none"></div><%- else -%><div id="primary_symbol_<%= session[:pimage] %>" style="display:none"></div><%- end -%>
+	      </div></td>
+	    </tr>
+	    
+	  </table></td>
+	</tr>
+	<tr>
+	  <td align="left" valign="middle" class="lightblue-header"><table width="620" border="0" cellspacing="0" cellpadding="0">
+	    <tr>
+	      <td width="620" align="left" valign="middle" class="yachtlist-page-no">
+		      <%#= will_paginate @galleries, :renderer => 'RemoteLinkRenderer' , :remote => { :update => 'mydiv', :url=> gallerypage_path} %>
+	      </td>
+	      <td align="left" valign="middle" class="yachtlist-page-no">
+		      <%= link_to image_tag('/images/slide-show.jpg', :border=>0), sliderimage_path(session[:yachtid]), :target=>"_new" %>
+	      </td>
+	    </tr>
+	  </table></td>
+	</tr>
+</table>
+

@@ -1,0 +1,67 @@
+<% form_remote_tag :url => updatekeyfeatures_path(session[:yachtid]), :update => 'div_keyfeatures', :loading => visual_effect(:Highlight, 'div_keyfeatures', :duration => 3 ), :complete => visual_effect(:appear, 'div_keyfeatures', :duration => 1), :failure => "alert('You can not add this inventory. Adding Failed.')"  do %>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-left:5px;">
+  <tr>
+    <td>
+      <ul style="list-style-image:none;list-style-position:outside;list-style-type:none;margin:0pt;padding:0pt;line-height:120%">
+        <% for keysellingfeature in @keysellingfeatures %>
+        <li style="float:left;margin:0px 5px 10px 0px;padding:0px;position:relative;width:225px;font-family:Arial,Helvetica,sans-serif;font-size:13px;">
+          <%= check_box_tag "#{keysellingfeature.name}","#{keysellingfeature.id}",@yacht.keysellingfeatures.include?(keysellingfeature),:onclick=>"addintotextbox(this.id,this.value);" %> <label for="<%= keysellingfeature.name.gsub(' ','_') %>" class="search-blacktxt"><%= keysellingfeature.name %></label>
+        </li> 
+        <% end %>
+      </ul>
+    </td>
+ </tr>  
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="300" colspan="3" align="left" valign="top"><table width="100%" border="0" cellspacing="3" cellpadding="0">
+      <tr>
+        <td align="left" valign="middle" class="blue-label-txt"><%= text_area :yacht, :key_selling_features, :style=>"width:400px;height:130px;display:none;" %></td>
+      </tr>
+      <tr>
+        <td width="150" align="left" valign="middle" class="blue-label-txt">Simply type in key features here and sperate them with a comma "," these features will be automatically added to your account for future usage.</td>
+      </tr>
+      <tr>
+        <td align="left" valign="middle" class="blue-label-txt"><%= text_area :yacht, :key_selling_features, :name=> "key_selling_features",:class => "profile-big-label", :style=>"width:339px;height:80px;", :value=>'' %></td>
+      </tr>
+    </table></td>
+  </tr>  
+  <tr>
+    <td align="left" valign="top">&nbsp;</td>
+    <td align="left" valign="top">&nbsp;</td>
+    <td align="right" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">&nbsp;</td>
+    <td align="left" valign="top">&nbsp;</td>
+    <td align="right" valign="top"><%= image_submit_tag "/images/save01.jpg", :width=>"56", :height=>"24", :border=>"0" %> </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+ 	function addintotextbox(id,value)
+ 	{
+ 	  var values = id.replace(/_/g, ' ');
+ 		if(document.getElementById(id).checked)
+ 		{
+ 		  if (document.getElementById('yacht_key_selling_features').value == ''){
+ 		    document.getElementById('yacht_key_selling_features').value = id;
+ 		  }
+ 		  else{
+ 			  document.getElementById('yacht_key_selling_features').value = document.getElementById('yacht_key_selling_features').value + "," + values;
+ 			}
+ 	
+ 		}
+ 		else
+ 		{
+ 		  var replacevalue1= ","+values;
+ 		  var replacevalue2= values+",";
+ 		  document.getElementById('yacht_key_selling_features').value = document.getElementById('yacht_key_selling_features').value.replace(replacevalue1,"");
+ 		  document.getElementById('yacht_key_selling_features').value = document.getElementById('yacht_key_selling_features').value.replace(replacevalue2,"");
+ 		}		
+ 	}		
+</script>
+<% end %>
+
+
+

@@ -1,0 +1,193 @@
+<table width="650" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="420" align="left" valign="top"><table width="420" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="left" valign="middle" class="details-cont-header">Principal Features</td>
+      </tr>
+      <tr>
+        <td align="left" valign="top">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="left" valign="top" class="gray-label-txt">This would be Key selling features that were Check off or added during input.</td>
+      </tr>
+      <tr>
+        <td align="left" valign="top" class="details-bullettxt" >
+          <% if !@details.key_selling_features.blank? %>
+            <% @newfeatures = "<ul><li>"+@details.key_selling_features.gsub(', ',',').gsub(',','</li><li>')+"</li></ul>" %>
+            <%= @newfeatures.gsub('<li></li>','') %>
+          <% end %>
+       </td>
+      </tr>
+      <tr>
+        <td align="left" valign="top">&nbsp;</td>
+      </tr>
+    </table></td>
+    <td width="15" align="left" valign="top"><img src="file:///D|/Kevin/new-century/Century-1/html/spacer.gif" width="15" height="1" /></td>
+    <td width="215" align="left" valign="top"><table width="215" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="left" valign="middle" class="details-cont-header">Specifications:</td>
+      </tr>
+      <tr>
+        <td align="left" valign="top"><table width="210" border="0" cellspacing="3" cellpadding="0">
+          <tr>
+            <td colspan="2" align="left" valign="middle">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="127" align="left" valign="middle" class="gray-label-txt">Vessel Name </td>
+            <% if not @details.name.blank? %><td width="74" align="left" valign="middle" class="gray-label-txt"><%= @details.name %></td><% end %>
+          </tr>
+          <tr>
+            <td width="127" align="left" valign="middle" class="gray-label-txt">Status </td>
+            <td width="74" align="left" valign="middle" class="gray-label-txt"><b><%= @details.status %></b></td>
+          </tr>
+          <tr>
+            <td width="127" align="left" valign="middle" class="gray-label-txt">Current Owner </td>
+            <% if not @details.owners_name.blank? %>
+              <td width="74" align="left" valign="middle" class="gray-label-txt">
+                <%= @details.owners_name %>
+              </td>
+            <% end %>
+          </tr>
+          
+          <tr>
+            <td width="127" align="left" valign="middle" class="gray-label-txt">Documentation No. </td>
+            <% if not @details.documentation_no.blank? %><td width="74" align="left" valign="middle" class="gray-label-txt"><%= @details.documentation_no %></td><% end %>
+          </tr>	            
+          
+          <tr>
+            <td width="127" align="left" valign="middle" class="gray-label-txt">Length </td>
+            <% if not @details.loa.blank? %><td width="74" align="left" valign="middle" class="gray-label-txt"><%= @details.loa %></td><% end %>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Beam</td>
+            <% if not @details.beam.blank? %><td align="left" valign="middle" class="gray-label-txt"><%= @details.beam %></td><% end %>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Draft</td>
+            <% if not @details.draft.blank? %><td align="left" valign="middle" class="gray-label-txt"><%= @details.draft %></td><% end %>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Fuel Capacity</td>
+            <% if not @details.fuel.blank? %><td align="left" valign="middle" class="gray-label-txt"><%= @details.fuel %></td><% end %>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Water Capcity</td>
+            <% if not @details.water.blank? %><td align="left" valign="middle" class="gray-label-txt"><%= @details.water %></td><% end %>
+          </tr>
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Holding Capacity</td>
+            <td align="left" valign="middle" class="gray-label-txt"><%#= %></td>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Cruising Speed</td>
+            <% if not @details.crusing_speed.blank? %><td align="left" valign="middle" class="gray-label-txt"><%= @details.crusing_speed %></td><% end %>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Maximum Speed </td>
+            <% if not @details.max_speed.blank? %><td align="left" valign="middle" class="gray-label-txt"><%=@details.max_speed  %></td><% end %>
+          </tr>
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Engines Cummins</td>
+            <td align="left" valign="middle" class="gray-label-txt"><%#=@details.  %></td>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Total HP </td>
+            <% if not @details.total_hp.blank? %><td align="left" valign="middle" class="gray-label-txt"><%=@details.total_hp %></td><% end %>
+          </tr>
+         
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Cabins</td>
+             <% if not @details.cabins.blank? %><td align="left" valign="middle" class="gray-label-txt"><%=@details.cabins %></td><% end %>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Berths</td>
+            <% if not @details.berth.blank? %><td align="left" valign="middle" class="gray-label-txt"><%=@details.berth %></td><% end %>
+          </tr>
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">&nbsp;</td>
+            <td align="left" valign="middle" class="gray-label-txt">&nbsp;</td>
+          </tr>
+          
+          
+        </table></td>
+      </tr>
+      <tr>
+        <td align="left" valign="top">&nbsp;</td>
+      </tr>
+      
+    </table></td>
+  </tr>
+  <tr>
+    <td colspan="3" align="left" valign="top" class="profile-labeltxt">Broker’s Comments:</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="left" valign="top"><img src="/images/spacer.gif" width="1" height="15" /></td>
+  </tr>
+  <tr>
+    <% if not @details.description.blank? %><td colspan="3" align="left" valign="top" class="normal-content"><%= @details.description %></td><% end %>
+  </tr>
+  <tr>
+    <td colspan="3" align="left" valign="top" class="profile-labeltxt">Attachments:</td>
+  </tr>
+  <% @attach = Attachment.find_all_by_yacht_id_and_access(@details.id,'public') %>
+  <% if not @attach.blank? %>     
+    <% for attach in @attach %>
+      <tr>
+        <td colspan="3" align="left" valign="middle" class="dashboard-bullettxt">
+          <ul>
+          <li style="margin-bottom:2px;margin-left:5px;">
+            <%= link_to attach.filename, downloadattachment_path(attach.id) %>
+            <% size = attach.filesize.to_i%>
+            <% sizekb = size/(1024) %>
+            <% if sizekb < 1 %>
+              (<%= size %>bytes)
+            <% elsif sizekb < 1000 %>
+              (<%= sizekb %> KB)
+            <% else %>
+              (<%= sizekb/1024 %> MB)
+            <% end %>    
+          </li>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+   <% end %>
+  
+   <% @attachprivate = Attachment.find_all_by_yacht_id_and_access(@details.id,'private') %>
+  <% if not @attachprivate.blank? %>  
+    
+    <% for attachprivate in @attachprivate %>
+      <% @attachbroker = Yacht.find_by_id(attachprivate.yacht_id) %>
+      <% @attachbroker = Broker.find_by_id(@attachbroker.broker_id) %>
+      <%if attachprivate.user_id == session[:id] || session[:id] == @attachbroker.user_id %>
+      <tr>
+        <td colspan="3" align="left" valign="middle" class="dashboard-bullettxt">
+          <ul>
+          <li style="margin-bottom:2px;margin-left:5px;">
+            <%= link_to attachprivate.filename, downloadattachment_path(attachprivate.id) %>
+            <% size = attachprivate.filesize.to_i%>
+            <% sizekb = size/(1024) %>
+            <% if sizekb < 1 %>
+              (<%= size %>bytes)
+            <% elsif sizekb < 1000 %>
+              (<%= sizekb %> KB)
+            <% else %>
+              (<%= sizekb/1024 %> MB)
+            <% end %>    
+          </li>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+    <% end %>
+   <% end %>    
+   
+</table>

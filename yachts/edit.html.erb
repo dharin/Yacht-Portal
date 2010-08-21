@@ -1,0 +1,495 @@
+<%= flash[:notice] %>
+<h1>New yacht</h1>
+<% form_for(@yacht,:html=>{:multipart => true}) do |f| %>
+  <%= f.error_messages %>
+  <table>
+    <tr>
+      <td>
+        <table>
+          <tr>
+            <td width="200"><h3>Main</h3></td>
+            <td><%= link_to_function "Toggle Form", visual_effect(:toggle_blind,:divmain) %></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="divmain">
+          <table>
+            <tr>
+              <td style="width:450px;vertical-align:top;">
+                <table>
+                  <tr>
+                    <td style="width:95px;">
+                       <%= f.label :vessel_name %><br />
+                    </td>
+                    <td>    
+                       <%= f.text_field :vessel_name %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= f.label :Vessel_type %>
+                    </td>
+                    <td>
+                      <%= collection_select(:yacht,:vessel_type,@types,:id,:name) %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= f.label :Vessel_style %>
+                    </td>
+                    <td>
+                       <%= f.text_field :vessel_style %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= f.label :Image %>
+                    </td>
+                    <td>
+                      <%= file_field 'yacht','yachtimage' %>
+                    </td>
+                  </tr>             
+                  <tr>
+                    <td>
+                        <%= f.label :Listing_type %>
+                    </td>
+                    <td>
+                        <%= f.text_field :listing_type %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= f.label :Date_of_listing %>
+                    </td>
+                    <td>
+                      <%= date_select 'yacht','date_of_listing' %> 
+                    </td>
+                  </tr>           
+                  <tr>
+                    <td>
+                      <%= f.label :Doc %>
+                    </td>
+                    <td>
+                      <%= f.text_field :doc %>
+                    </td>
+                  </tr>      
+                  <tr>
+                    <td>      
+                        <%= f.label :length %><br />
+                    </td>
+                    <td>   
+                        <%= f.text_field :length %>
+                    </td>
+                  </tr>   
+                  <tr>
+                    <td>
+                         <%= f.label :year %><br />
+                    </td>
+                    <td>
+                         <%= f.text_field :year %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= f.label :electronics %><br />
+                    </td>
+                    <td>   
+                      <%= f.text_field :electronics %>
+                    </td>
+                  </tr>    
+                  <tr>
+                    <td>
+                      <%= f.label :commission %><br />
+                    </td>
+                    <td>    
+                      <%= f.text_field :commission %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= f.label :Buyeragentshare %>
+                    </td>
+                    <td>
+                      <%= f.text_field :buyeragentshare %>
+                    </td>
+                  </tr>      
+                  <tr>
+                    <td>
+                      <%= f.label :price, 'Asking price' %><br />
+                    </td>
+                    <td>    
+                      <%= f.text_field :price %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                         <%= f.label :status %><br />
+                    </td>   
+                    <td>
+                                       
+                     <%# if @yacht.status.to_s == 'New' %>
+                       <%# @state_new = true %>
+                       <%# @state_used = false%>
+                     <%#else%>
+                       <%# @state_used = true %>
+                       <%# @state_new = false %>
+                     <%#end%>
+                       <%= f.radio_button 'status', 'New',options = { } -%> New
+                       <%= f.radio_button 'status', 'Used' -%> Used
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td style="width:400px;vertical-align:top;">
+                <table style="vertical-align:top">
+                  <tr>
+                    <td style="width:95px;vertical-align:top">
+                      <%= f.label :key_features %><br />
+                    </td>
+                    <td>    
+                      <%= f.text_area :key_features,:rows=>5 %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= f.label :Additional_features %>
+                    </td>
+                    <td>
+                      <%= f.text_area :additional_features,:rows=>5 %>
+                    </td>
+                  </tr>      
+                  <tr>
+                   <td style="width:95px;vertical-align:top">
+                       <%= f.label :description %><br />
+                   </td>
+                   <td>    
+                       <%= f.text_area :description,:rows=>5 %>
+                   </td>
+                </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table>
+          <tr>
+            <td width="200"><h3>Location</h3></td>
+            <td><%= link_to_function "Toggle Location", visual_effect(:toggle_blind,:divlocation) %></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="divlocation">
+          <table>
+            <tr>
+              <td  style="width:420px;vertical-align:top;">
+                <table>
+                  <tr>
+                    <td style="width:95px;"> 
+                       <%= f.label :Location %>
+                    </td>
+                    <td>
+                       <%= f.text_field :region %>
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td>
+                      <%= f.label :country %>
+                    </td>
+                    <td>   
+                      <%= f.country_select ['country'] %>
+                    </td>    
+                  </tr>
+                </table>
+              </td>
+              <td style="width:400px;vertical-align:top;">
+                <table>
+                  <tr>
+                    <td style="width:95px;"> 
+                      <%= f.label :state %>
+                    </td>
+                    <td>
+                      <%= f.text_field :state %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>           
+                      <%= f.label :city %>
+                    </td>
+                    <td>
+                      <%= f.text_field :city %>
+                    </td>
+                 </tr>
+                  <tr>
+                    <td>
+                     <%= f.label :zipcode %>
+                    </td>
+                    <td>
+                     <%= f.text_field :zipcode %> 
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table>
+          <tr>
+            <td width="200"><h3>Yacht Specs</h3></td>
+            <td><%= link_to_function "Toggle Yacht Specs", visual_effect(:toggle_blind,:divspecs) %></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="divspecs">
+          <table>
+            <tr>
+              <td style="width:450px;vertical-align:top;">
+                <table>
+                  <tr>
+                    <td style="width:95px;">
+                        <%= f.label :model_name %><br />
+                    </td>
+                    <td>     
+                        <%= f.text_field :model_name %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= f.label :beam %><br />
+                    </td>
+                    <td>   
+                      <%= f.text_field :beam %>
+                    </td>
+                  </tr>     
+                  <tr>
+                    <td>
+                     <%= f.label :draft %><br />
+                    </td>
+                    <td>  
+                     <%= f.text_field :draft %>
+                    </td>
+                  </tr>  
+                  <tr>
+                    <td>
+                      <%= f.label :weight %><br />
+                    </td>
+                    <td>   
+                      <%= f.text_field :weight %>
+                    </td>
+                  </tr>  
+                  <tr>
+                    <td>
+                       <%= f.label :Cabins %><br />
+                    </td>
+                    <td>    
+                      <%= f.text_field :cabins %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                     <%= f.label :Berths %><br />
+                    </td>
+                    <td>   
+                     <%= f.text_field :berths %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= f.label :Deck %>
+                    </td>
+                    <td>
+                      <%= f.text_field :deck %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= f.label :Salon %>
+                    </td>
+                    <td>
+                      <%= f.text_field :salon %>
+                    </td>
+                 </tr>
+                 <tr>
+                   <td>
+                     <%= f.label :Helm %>
+                   </td>
+                   <td>
+                     <%= f.text_field :helm %>
+                   </td>
+                </tr>                    
+                </table>
+              </td>
+              <td style="width:400px;vertical-align:top;">
+                <table>
+                  <tr>
+                    <td style="width:95px;">                             
+                        <%= f.label :Cruise_speed %><br />
+                    </td>
+                    <td>     
+                        <%= f.text_field :crusing_speed %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                     <%= f.label :max_speed %><br />
+                    </td>
+                    <td>  
+                     <%= f.text_field :max_speed %>
+                    </td>
+                  </tr>    
+                  <tr>
+                    <td>
+                       <%= f.label :water_capacity %><br />
+                    </td>
+                    <td>
+                       <%= f.text_field :water_capacity %>
+                    </td>    
+                  </tr>
+                  <tr>
+                    <td>
+                       <%= f.label :holding_capacity %><br />
+                    </td>
+                    <td>
+                      <%= f.text_field :holding_tank %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                       <%= f.label :hin %><br />
+                    </td>
+                    <td>    
+                      <%= f.text_field :hin %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= f.label :range %>
+                    </td>
+                    <td>
+                      <%= f.text_field :range %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= f.label :Bridge %>
+                    </td>
+                    <td>
+                      <%= f.text_field :bridge %>
+                    </td>
+                 </tr>
+                 <tr>
+                   <td>
+                     <%= f.label :Galley %>
+                   </td>
+                   <td>
+                     <%= f.text_field :galley %>
+                   </td>
+                </tr>
+                <tr>
+                  <td>
+                    <%= f.label :Cockpit %>
+                  </td>
+                  <td>
+                    <%= f.text_field :cockpit %>
+                  </td>
+                </tr>                           
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table>
+          <tr>
+            <td width="200"><h3>Engine Specs</h3></td>
+            <td><%= link_to_function "Toggle Engine Specs", visual_effect(:toggle_blind,:divengine) %></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="divengine">
+          <table>
+            <tr>
+              <td style="width:450px;vertical-align:top;">
+                <table>
+                  <tr>
+                    <td style="width:95px;">
+                       <%= f.label :engine_maker_id %><br />
+                    </td>
+                    <td>    
+                      <%= collection_select(:yacht,:engine_maker_id,@engineemakers,:id,:name) %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                       <%= f.label :engine_model %><br />
+                    </td>
+                    <td>   
+                      <%= f.text_field :engine_model %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                       <%= f.label :engine_drive_id %><br />
+                    </td>
+                    <td>    
+                      <%= collection_select(:yacht,:engine_drive_id,@enginedrives,:id,:name) %>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td style="width:400px;vertical-align:top;">
+                <table>
+                  <tr>
+                    <td style="width:95px;">
+                      <%= f.label :fuel_capacity %><br />
+                    </td>
+                    <td>
+                      <%= f.text_field :fuel_capacity %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= f.label :Total_horsepower %><br />
+                    </td>
+                    <td>
+                      <%= f.text_field :horsepower %>
+                      <%#= f.hidden_field :broker_id, :value=> session[:brokerid] %>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', yachts_path %>
+<%= javascript_include_tag :defaults %>

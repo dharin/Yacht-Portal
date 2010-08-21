@@ -1,0 +1,87 @@
+<div id="overlay" style="display: none;"></div>
+<div id="indicator" class="dialogue" style="left:60%;top:50%;display: none;"><%= image_tag('/images/indicator.gif') %></div>	
+<div id = "imagegallery" class="dialogue" style="display:none;margin-left:-350px;margin-top:160px;z-index:5000">
+  <div id="close"><a href="javascript: void(0);" onclick="closeDialoguePopup('imagegallery');"><%= image_tag('/images/cross.gif', :border=> 0) %></a></div>
+  <div id="divgalleryimage"></div>
+</div>
+<div class="container">
+  <table width="650" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>
+        <table width="650" border="0" cellspacing="0" cellpadding="0">
+          <tr align="center">
+            <td width="650" class="lightblue-header" align="right">
+              <%#= link_to image_tag('/images/upload-photos.jpg', :border=>0), sliderimage_path(session[:yachtid]), :target=>"_new" %>
+              <span style="width:680px;">
+								<% form_for(@gallery) do |f| %>
+									<span>
+										<span id="spanButtonPlaceHolder"></span>
+									</span>
+								<% end %>
+						  </span>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="divFileProgressContainer" style="height:50px;"></div>
+      </td>
+    </tr>
+    <tr>
+      <td style="height:300px;">
+        <div id="mydiv">
+			<%= render :partial=>'/yachts/previewyachtgallery' %>
+			</div>
+
+      </td>
+    </tr>
+  </table>
+	<script type='text/javascript'>
+	  var swfu;
+	  pageLoad();
+	  
+	  
+	  function pageLoad() {
+	    swfu = new SWFUpload({
+	      upload_url : '<%= galleries_path -%>?_swfupload_demo_session=<%= u session.session_id %>',
+	      flash_url : '/flash/swfupload.swf',
+	
+				// Button settings
+				button_image_url: "/images/upload-photos-01.jpg",	// Relative to the Flash file
+				button_width: "124",
+				button_height: "24",
+				button_placeholder_id: "spanButtonPlaceHolder",
+				button_text: '',
+				button_text_style: ".theFont { font-size: 16; }",
+	
+	      file_size_limit : '10000',
+	      file_types : '*.jpg',
+	      file_types_description : 'JPG Images',
+	      file_upload_limit : '0',
+				custom_settings : {
+					progressTarget : "fsUploadProgress"
+				},
+	
+	      file_queue_error_handler : fileQueueError,
+	      file_dialog_complete_handler : fileDialogComplete,
+	      upload_progress_handler : uploadProgress,
+	      upload_error_handler : uploadError,
+	      upload_success_handler : uploadSuccess,
+	      upload_complete_handler : uploadComplete,
+	
+				post_params : {
+					authenticity_token : '<%= u form_authenticity_token -%>',
+				},
+	
+	      custom_settings : { 
+	        upload_target : 'divFileProgressContainer',
+	      },
+	
+	      debug: false
+	
+	    });
+	  }
+	</script>
+</div>

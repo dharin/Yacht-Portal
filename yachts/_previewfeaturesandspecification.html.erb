@@ -1,0 +1,82 @@
+<table width="650" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="420" align="left" valign="top"><table width="420" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="left" valign="middle" class="details-cont-header">Principal Features</td>
+      </tr>
+      <tr>
+        <td align="left" valign="top">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="left" valign="top" class="gray-label-txt">This would be Key selling features that were Check off or added during input.</td>
+      </tr>
+      <tr>
+        <td align="left" valign="top" class="details-bullettxt" >
+         <div id="div_keyfeatures">
+           <%= render :partial=>'/yachts/showkeyfeatures'%>
+         </div>   
+        </td>
+      </tr>
+      <tr>
+        <td align="left" valign="top">&nbsp;</td>
+      </tr>
+    </table></td>
+    <td width="15" align="left" valign="top"><img src="file:///D|/Kevin/new-century/Century-1/html/spacer.gif" width="15" height="1" /></td>
+    <td width="215" align="left" valign="top"><table width="215" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="left" valign="middle" class="details-cont-header">Specifications:</td>
+      </tr>
+      <tr>
+        <td align="left" valign="top">
+         <div id="div_specification">
+            <%= render :partial=>'/yachts/showspecification' %>
+         </div>        
+        </td>
+      </tr>
+      <tr>
+        <td align="left" valign="top">&nbsp;</td>
+      </tr>
+      
+    </table></td>
+  </tr>
+  <tr>
+    <td colspan="3" align="left" valign="top" class="profile-labeltxt">Broker’s Comments:</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="left" valign="top"><img src="/images/spacer.gif" width="1" height="15" /></td>
+  </tr>
+  <tr>
+    <td colspan="3" align="left" valign="top">
+      <div id="div_brokercomment">
+        <%= render :partial=>'/yachts/showbrokercomment'%>
+      </div>
+    </td>
+  <div>
+  </tr>
+  <% @attach = Attachment.find_all_by_yacht_id_and_access(@details.id,'public') %>
+  <% if not @attach.blank? %>  
+  <tr>
+    <td colspan="3" align="left" valign="top" class="profile-labeltxt">Attachments:</td>
+  </tr>
+  <% for attach in @attach %>
+    <tr>
+      <td colspan="3" align="left" valign="middle" class="dashboard-bullettxt">
+        <ul>
+          <li style="margin-bottom:2px;margin-left:5px;">
+            <%= link_to attach.filename, downloadattachment_path(attach.id) %>
+            <% size = attach.filesize.to_i%>
+            <% sizekb = size/(1024) %>
+            <% if sizekb < 1 %>
+              (<%= size %>bytes)
+            <% elsif sizekb < 1000 %>
+              (<%= sizekb %> KB)
+            <% else %>
+              (<%= sizekb/1024 %> MB)
+            <% end %>    
+          </li>
+        </ul>
+      </td>
+    </tr>
+  <% end %>
+  <% end %>
+</table>

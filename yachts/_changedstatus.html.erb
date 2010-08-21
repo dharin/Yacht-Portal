@@ -1,0 +1,9 @@
+<% if params[:status]=="Active" %>
+	<%= image_tag('/images/active.png',:style=>"margin-left:-3px;margin-top:-3px;position:absolute;") %>
+<% elsif params[:status] == "Pending"%>
+   <%= image_tag('/images/deal_pending.png', :style=>"margin-left:-3px;margin-top:-3px;position:absolute;") %>
+<% elsif params[:status] == "Sold"%>
+   <%= image_tag('/images/sold1.png',:style=>"margin-left:-3px;margin-top:-3px;position:absolute;") %>
+<% elsif params[:status] == "Inactive"%>
+   <%= image_tag('/images/inactive.png',:style=>"margin-left:-3px;margin-top:-3px;position:absolute;") %>
+<% end %>

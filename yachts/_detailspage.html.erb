@@ -1,0 +1,7 @@
+<% if session[:tabdetail] == 'specification' %>
+<%= render :partial=>'/yachts/featuresandspecification' %>
+<% elsif session[:tabdetail] == 'additional' %>
+<%= render :partial=>'/yachts/yachtadditionaldetails' %>
+<% elsif session[:tabdetail] == 'gallery' %>
+<%= render :partial=>'/yachts/yachtgallery' %>
+<% end %>

@@ -1,0 +1,74 @@
+<div id = "imagegallery" class="dialogue" style="display:none;margin-left:-350px;margin-top:160px;z-index:5000">
+  <div id="close"><a href="javascript: void(0);" onclick="closeDialoguePopup('imagegallery');"><%= image_tag('/images/cross.gif', :border=> 0) %></a></div>
+  <div id="divgalleryimage"></div>
+</div>
+
+<table width="920" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+	  <td width="200"  align="left" valign="top" class="details-img-white-bg"><table width="234" border="0" cellspacing="0" cellpadding="0">
+	    <tr>
+	      <td width="234"><% if @details.photo_medium %><%= image_tag(showimage_path(@details.id), :width=>"234", :alt => "Image not available") %><% else %><%= image_tag('yacht-here.jpg', :width=>234) %><% end %></td>
+	    </tr>
+	    <tr>
+	      <% if not @showprimary.blank? %><td align="right" valign="middle" class="details-enlarge"><%= link_to_remote "Enlarge here", :update=> "divgalleryimage", :url=> "/home/showgallery/#{@showprimary.id}", :success=>"$('overlay').style.display='';$('imagegallery').style.display='';" %></td><% end %>
+	    </tr>
+	  </table></td>
+	  <td width="10" align="left" valign="top"><img src="/images/spacer.gif" width="10" height="1" /></td>
+	  <td width="249" align="left" valign="top" class="details-img-graybg"><table width="216" border="0" cellspacing="0" cellpadding="0">
+	    <tr>
+	      <td align="left" valign="top"><table width="224" border="0" cellspacing="0" cellpadding="0">
+	        <tr>
+	          <td>
+					<ul style="list-style-image:none;list-style-position:outside;list-style-type:none;margin:0pt;padding:0pt;">
+					<% if not @details.galleries.blank? %>
+				  		<% for photo in @details.galleries.limit(4) %>
+				  			<li style="float:left;margin:0px 8px 8px 0px;padding:2px;position:relative;width:100px;background-color:#FFFFFF;height:75px;">
+				  			<label class="search-blacktxt">
+				  		<% if !photo.photo_small.blank? %>
+				  				<%= image_tag("/yachts/show_small_image/#{photo.id}",:width=>'100',:height=>'75') %>
+				  			<% else %>
+				  				<%= image_tag('/images/yacht-here.jpg',:width=>'100',:height=>'75') %>
+				  			<% end %> 
+				  		</label>
+				  			</li> 
+				  		<% end %>
+				  <% else %>
+				     <%= image_tag('/images/yacht-here.jpg',:width=>'100',:height=>'75') %>
+				     <%= image_tag('/images/yacht-here.jpg',:width=>'100',:height=>'75') %>
+				     <%= image_tag('/images/yacht-here.jpg',:width=>'100',:height=>'75') %>
+				     <%= image_tag('/images/yacht-here.jpg',:width=>'100',:height=>'75') %>
+				  <% end %>   
+					</ul>
+	 		    </td>
+	        </tr>
+	      </table></td>
+      </tr>
+	    <tr>
+	      <% if not @showprimary.blank? %><td align="right" valign="top" class="details-img-icon"><%= link_to_remote "View all images", :update=> "divgalleryimage", :url=> "/home/showgallery/#{@showprimary.id}", :success=>"$('overlay').style.display='';$('imagegallery').style.display='';" %></td><% end %>
+	    </tr>
+	  </table></td>
+	  <td width="10" align="left" valign="top"><img src="/images/spacer.gif" width="10" height="1" /></td>
+	  <td width="415" align="left" valign="top" class="details-img-graybg"><table width="374" border="0" cellspacing="5" cellpadding="0">
+	    <tr>
+	      <td width="134" class="details-blk-bigtxt">Name</td>
+	      <td width="250" class="details-green-bigtxt"><%= @details.name %></td>
+	    </tr>
+	    <tr>
+	      <td class="details-blk-txt">Year, Make</td>
+	      <td class="details-blue-txt"><%= @details.making_year %></td>
+	    </tr>
+	    <tr>
+	      <td class="details-blk-txt">Model</td>
+	      <td class="details-blue-txt"><%= @details.model %></td>
+	    </tr>
+	    <tr>
+	      <td class="details-blk-txt">Location</td>
+	      <td class="details-blue-txt"><%= @details.city %><%= @details.state %><%= @details.country %></td>
+	    </tr>
+	    <tr>
+	      <td class="details-redtxt">Asking Price</td>
+	      <td class="details-redtxt"><%= @details.price %></td>
+	    </tr>
+    </table></td>
+	</tr>
+</table>

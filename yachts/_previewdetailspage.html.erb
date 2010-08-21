@@ -1,0 +1,7 @@
+<% if session[:tabdetail] == 'specification' %>
+<%= render :partial=>'/yachts/previewfeaturesandspecification' %>
+<% elsif session[:tabdetail] == 'additional' %>
+<%= render :partial=>'/yachts/previewyachtadditionaldetails' %>
+<% elsif session[:tabdetail] == 'gallery' %>
+<%= render :partial=>'/yachts/uploadimage'%>
+<% end %>

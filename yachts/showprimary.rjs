@@ -1,0 +1,8 @@
+page.hide "primary_symbol_"+@previous.to_s
+page.show "primary_symbol_"+params[:current_id].to_s
+
+
+
+
+
+

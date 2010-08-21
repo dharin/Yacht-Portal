@@ -1,0 +1,96 @@
+<% form_remote_for(@yacht,:url=>updatespecification_path(@yacht.id),:update=>'div_specification',:loading => visual_effect(:Highlight, 'div_specification', :duration => 3 ), :complete => visual_effect(:appear, 'div_specification', :duration => 1), :failure => "alert('You can not add this inventory. Adding Failed.')"  ) do %>
+<table width="210" border="0" cellspacing="3" cellpadding="0">
+          <tr>
+            <td colspan="2" align="left" valign="middle">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="127" align="left" valign="middle" class="gray-label-txt">Vessel Name </td>
+            <td width="74" align="left" valign="middle" class="gray-label-txt">
+	            <%= text_field :yacht,:name,:class => "profile-small-label" %>
+            </td>
+          </tr>
+          <tr>
+            <td width="127" align="left" valign="middle" class="gray-label-txt">Status </td>
+            <td width="74" align="left" valign="middle" class="gray-label-txt"><b><%= text_field :yacht,:status,:class => "profile-small-label" %></b></td>
+          </tr>
+          <tr>
+            <td width="127" align="left" valign="middle" class="gray-label-txt">Current Owner </td>
+              <td width="74" align="left" valign="middle" class="gray-label-txt">
+               <%= text_field :yacht,:owners_name,:class => "profile-small-label" %>                
+              </td>
+          </tr>
+          
+          <tr>
+            <td width="127" align="left" valign="middle" class="gray-label-txt">Documentation No. </td>
+            <td width="74" align="left" valign="middle" class="gray-label-txt"><%= text_field :yacht,:documentation_no,:class => "profile-small-label" %></td>
+          </tr>	            
+          
+          <tr>
+            <td width="127" align="left" valign="middle" class="gray-label-txt">Length </td>
+            <td width="74" align="left" valign="middle" class="gray-label-txt"><%= text_field :yacht,:loa,:class => "profile-small-label" %></td>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Beam</td>
+            <td align="left" valign="middle" class="gray-label-txt"><%= text_field :yacht,:beam,:class => "profile-small-label" %></td>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Draft</td>
+            <td align="left" valign="middle" class="gray-label-txt"><%= text_field :yacht,:draft,:class => "profile-small-label" %></td>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Fuel Capacity</td>
+            <td align="left" valign="middle" class="gray-label-txt"><%= text_field :yacht,:fuel,:class => "profile-small-label" %></td>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Water Capacity</td>
+            <td align="left" valign="middle" class="gray-label-txt"><%= text_field :yacht,:water,:class => "profile-small-label" %></td>
+          </tr>
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Holding Capacity</td>
+            <td align="left" valign="middle" class="gray-label-txt"><%= text_field :yacht,:holding_capacity,:style=>"width:75px;",:class => "profile-small-label" %></td>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Cruising Speed</td>
+            <td align="left" valign="middle" class="gray-label-txt"><%= text_field :yacht,:crusing_speed,:style=>"width:75px;",:class => "profile-small-label" %></td>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Maximum Speed </td>
+            <td align="left" valign="middle" class="gray-label-txt"><%= text_field :yacht,:max_speed,:style=>"width:75px;",:class => "profile-small-label" %></td>
+          </tr>
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Engines Cummins</td>
+            <td align="left" valign="middle" class="gray-label-txt"><%= text_field :yacht,:engine_commins,:style=>"width:75px;",:class => "profile-small-label" %></td>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Total HP </td>
+            <td align="left" valign="middle" class="gray-label-txt"><%= text_field :yacht,:total_hp,:style=>"width:75px;",:class => "profile-small-label" %></td>
+          </tr>
+         
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Cabins</td>
+             <td align="left" valign="middle" class="gray-label-txt"><%= text_field :yacht,:cabins,:style=>"width:75px;",:class => "profile-small-label" %></td>
+          </tr>
+          
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">Berths</td>
+            <td align="left" valign="middle" class="gray-label-txt"><%= text_field :yacht,:berth,:style=>"width:75px;",:class => "profile-small-label" %></td>
+          </tr>
+          
+          <tr>
+            <td align="right" colspan="2" valign="middle" class="gray-label-txt"><%= image_submit_tag "/images/save01.jpg", :width=>"56", :height=>"24", :border=>"0" %></td>
+          </tr>
+          <tr>
+            <td align="left" valign="middle" class="gray-label-txt">&nbsp;</td>
+            <td align="left" valign="middle" class="gray-label-txt">&nbsp;</td>
+          </tr>
+          
+          
+        </table>
+<% end %>

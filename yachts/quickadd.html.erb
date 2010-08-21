@@ -1,0 +1,62 @@
+<% form_for(@yacht, :html=>{:multipart => true}) do |f| %>
+  <table width="493" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td align="left" valign="top" class="register-bg"><table width="491" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td align="left" valign="top" class="register-header">Basic Information</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top"><table width="470" border="0" cellspacing="8" cellpadding="0">
+            <tr>
+              <td align="left" valign="top" colspan="2">
+              </td>
+            </tr>
+            <tr>
+              <td align="left" valign="top" class="profile-labeltxt"><%= f.label 'documentation_no', 'Documentation # :'%></td>
+              <td align="left" valign="top"><%= f.text_field :documentation_no, :maxlength => '255', :class=> 'profile-label' %> <a style="cursor:pointer" onmouseover="fadeBox.showTooltip(event,'Official Number: <br/>Please enter the Official U.S. Guard Doc#, State Registration # or Other Registry #. <br/><br/>Tip: <br/>By entering accurate data the YachtPlus engine will auto populate your listing if the vessel exists in our Global Data Base. This field is not required. However, you will benefit with form automation by using it.')"><img src="/images/keywords-icon.jpg" width="26" height="16" border="0" /></a></td>
+            </tr>
+            <tr>
+              <td align="left" valign="top" class="profile-labeltxt"><%= f.label 'loa', 'Length :'%></td>
+              <td align="left" valign="top"><%= f.text_field :loa, :maxlength => '255', :class=> 'profile-label' %></td>
+            </tr>
+            <tr>
+              <td align="left" valign="top" class="profile-labeltxt"><%= f.label 'builder', 'Make :'%></td>
+              <td align="left" valign="top"><%= f.text_field :builder, :maxlength => '255', :class=> 'profile-label' %></td>
+            </tr>
+            <tr>
+              <td align="left" valign="top" class="profile-labeltxt"><%= f.label 'model', 'Model :'%></td>
+              <td align="left" valign="top"><%= f.text_field :model, :maxlength => '255', :class=> 'profile-label' %></td>
+            </tr>
+            <tr>
+              <td align="left" valign="top" class="profile-labeltxt"><%= f.label 'making_year', 'Year :'%></td>
+              <td align="left" valign="top"><%= select_year Date.today, {:start_year=> 100.years.ago.strftime('%Y').to_i}, :class=> 'profile-label', :name=>'yacht[making_year]', id=>'yacht_making_year' %></td>
+            </tr>
+            <tr>
+              <td align="left" valign="top" class="profile-labeltxt"><%= f.label 'price', 'Asking Price :'%></td>
+              <td align="left" valign="top"><%= f.text_field :price, :maxlength => '255', :class=> 'profile-label' %></td>
+            </tr>
+            <tr>
+              <td align="left" valign="top" class="profile-labeltxt"><%= f.label 'type', 'Yacht Type :'%></td>
+              <td align="left" valign="top"><%= f.select :yacht_type, Type.all.collect{|t| [t.name, t.name]}, {:include_blank=>'-Select Type-'}, :maxlength => '255', :class=> 'profile-label' %></td>
+            </tr>
+            <tr>
+              <td align="left" valign="top" class="profile-labeltxt">&nbsp;</td>
+              <%= hidden_field :yacht_status, '',:value=>'Active', :name=>"yacht_status",:id=>"yacht_status" %>
+              <td align="left" valign="top">
+              <%#= image_submit_tag "/images/profile-submit-butt.jpg", :width=>"95", :height=>"31", :border=>"0", :onclick=>"javascript:document.getElementById('yacht_status').value='Active';", :value => "Active" %> &nbsp; &nbsp; &nbsp;
+              <%= image_submit_tag "/images/bttons_12.jpg", :onclick=>"javascript:document.getElementById('yacht_status').value='Active';" %> &nbsp; &nbsp; &nbsp;
+              <% if controller.action_name == 'newbroker' && controller.controller_name == 'users' %>
+              <% else %>
+                <%= image_submit_tag "/images/Untitled-1_06.jpg",:onclick=>"javascript:document.getElementById('yacht_status').value='Inactive';" %>
+              <% end %>
+              </td>
+            </tr>
+          </table></td>
+        </tr>
+        <tr>
+          <td align="left" valign="top">&nbsp;</td>
+        </tr>
+      </table></td>
+    </tr>
+  </table>
+<% end %>

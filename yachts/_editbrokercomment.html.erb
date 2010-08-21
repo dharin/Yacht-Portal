@@ -1,0 +1,12 @@
+<% form_remote_for(@yacht,:url=>updatebrokercomment_path,:update=>'div_brokercomment',:loading => visual_effect(:Highlight, 'div_brokercomment', :duration => 3 ), :complete => visual_effect(:appear, 'div_brokercomment', :duration => 1), :failure => "alert('You can not add this inventory. Adding Failed.')"  ) do %>
+  <table width="100%">
+   <tr>
+     <td colspan="3" align="left" valign="top" class="normal-content">
+       <%= text_area :yacht,:description,:rows=>"5",:cols=>"88",:class => "profile-big-label"%>
+     </td>
+   </tr>
+   <tr>
+     <td colspan="3" align="right" valign="top" class="normal-content"><%= image_submit_tag "/images/save01.jpg", :width=>"56", :height=>"24", :border=>"0" %></td>
+   </tr>
+  </table>
+<% end %>

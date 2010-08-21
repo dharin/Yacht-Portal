@@ -1,0 +1,34 @@
+<table width="650" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+	  <td style="height:300px;" align="center" valign="middle"><table width="650" border="0" cellspacing="0" cellpadding="0">
+	    <tr>
+	      <td align="center" valign="middle" class="yachtlist-page-no"><div id="thumbnails" style="text-align:center;">
+	        <ul style="list-style-image:none;list-style-position:outside;list-style-type:none;margin:0pt;padding:0pt;line-height:120%">
+					<% for galleries in @details.galleries %>
+	  				<li style="float:left;align:center;text-align:center;height:190px;margin:0px 5px 10px 0px;padding:0px;position:relative;width:120px;font-family:Arial,Helvetica,sans-serif;font-size:13px;">
+	  				  <table border="0" cellspacing="0" cellpadding="0" >
+	  				    <tr>
+	  				      <td height="25" style="vertical-align:middle;" align="center">
+	  				      <% if galleries.caption.blank? %>
+	  				        <div style="height:25px;text-align:center;" class="search-blacktxt" id="div_gallery_<%= galleries.id %>">&nbsp;</div>
+	  				      <% else %>
+  				           <div style="height:25px;text-align:center;" class="search-blacktxt" id="div_gallery_<%= galleries.id %>">
+  				           <%= galleries.caption %></div>
+	  				      <% end %>
+	  				      <div id="txtgalleries_<%= galleries.id %>" style="display:none"></div>
+	  				      </td>
+	  				    </tr>
+	  				    <tr>
+	  				      <td align="center" height="80">
+  					        <%= image_tag showsmallimage_path(galleries.id) %>
+					        </td>
+                </tr>
+					    </table>
+					  </li>
+					<% end %>
+					</ul>
+	      </div></td>
+	    </tr>
+	  </table></td>
+	</tr>
+</table>

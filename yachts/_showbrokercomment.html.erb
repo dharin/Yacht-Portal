@@ -1,0 +1,8 @@
+<table width="100%">
+<tr>
+  <% if not @details.description.blank? %><td colspan="3" align="left" valign="top" class="normal-content"><%= @details.description %></td><% end %>
+</tr>
+<tr>
+  <td colspan="3" align="right" valign="top" class="normal-content"><%= link_to_remote image_tag('/images/edit01.jpg',:alt=>'Edit',:title=> "Edit",:border=>"0"),:url=>editbrokercomment_path(@details.id),:loading => visual_effect(:Highlight, 'div_brokercomment', :duration => 3 ), :complete => visual_effect(:appear, 'div_brokercomment', :duration => 1), :failure => "alert('You can not add this inventory. Adding Failed.')" %></td>
+</tr>
+</table>

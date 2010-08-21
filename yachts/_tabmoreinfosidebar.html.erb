@@ -1,0 +1,155 @@
+<table width="264" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+	  <td align="left" valign="top"><img src="/images/spacer.gif" width="1" height="32" /></td>
+	</tr>
+	<tr>
+	  <td height="535" align="left" valign="top"><table width="264" border="0" cellspacing="0" cellpadding="0">
+	    <tr>
+	      <td align="left" valign="top" class="yacht-details-cont-bg"><table width="232" border="0" cellspacing="0" cellpadding="0">
+	        <tr>
+	          <td align="left" valign="top"><table width="232" border="0" cellspacing="0" cellpadding="0">
+	            <tr>
+	              <td align="left" valign="middle" class="details-cont-header"><table width="212" border="0" cellspacing="0" cellpadding="0">
+	                <tr>
+	                  <td width="181" align="left" valign="middle">Tools:</td>
+	                  <td width="19" align="left" valign="middle">
+                     <%= link_to_function "<span id='spantools'>"+image_tag('/images/dashboard-minimise.jpg',:width=>"15",:height=>"15",:border=>"0")+"</span>", "Effect.toggle('divtools','blind', {duration:0.5});changeImage('spantools')" %>
+	                  </td>
+	                </tr>
+	              </table></td>
+	            </tr>
+	            <tr>
+	              <td align="left" valign="top"><div id="divtools" style="display:block"><table width="228" border="0" cellspacing="3" cellpadding="0">
+	                <tr>
+	                  <td colspan="2" align="left" valign="middle"><img src="/images/spacer.gif" width="1" height="12" /></td>
+	                  </tr>
+	                <tr>
+	                  <td width="40" align="left" valign="middle"><%= link_to_remote image_tag('/images/addtofevorite-icon.jpg',:border=>0), :url=> {:controller=>'home', :action=>'fav_flag'}, :with => "'yacht=#{params[:id]}'", :complete => "eval(request.responseText)" %></td>
+	                  <td width="181" align="left" valign="middle" class="details-icontxt"><%= link_to_remote 'Add to Favorites', :url=> {:controller=>'home', :action=>'fav_flag'}, :with => "'yacht=#{params[:id]}'", :complete => "eval(request.responseText)" %></td>
+	                </tr>
+	                <tr>
+	                  <td align="left" valign="middle"><a href="#"><img src="/images/pdf-icon.jpg" width="30" height="29" border="0" /></a></td>
+	                  <td align="left" valign="middle" class="details-icontxt"><a href="#">Complete Brochure</a></td>
+	                </tr>
+	                <tr>
+	                  <td align="left" valign="middle">
+	                    <%= link_to_remote image_tag('/images/details-broker-icon.jpg',:border=>0), :url=> {:controller=>'home', :action=>'notify_flag'}, :with => "'yacht=#{params[:id]}'", :complete => "eval(request.responseText)" %>
+	                  </td>
+	                  <td align="left" valign="middle" class="details-icontxt">
+	                    <%= link_to_remote "Notify My Broker", :url=> {:controller=>'home', :action=>'notify_flag'}, :with => "'yacht=#{params[:id]}'", :complete => "eval(request.responseText)" %>
+	                  </td>
+	                </tr>
+	                <tr>
+	                  <td align="left" valign="middle"><a href="#"><img src="/images/details-printer-icon.jpg" width="30" height="27" border="0" /></a></td>
+	                  <td align="left" valign="middle" class="details-icontxt"><a href="#">Format page for printing</a></td>
+	                </tr>
+	                <tr>
+	                  <td align="left" valign="middle"><%= link_to_remote image_tag('/images/informationicon-icon.jpg',:border=>0), :url=> {:controller=>'home', :action=>'information_flag'}, :with => "'yacht=#{id}'", :complete => "eval(request.responseText)" %></td>
+                    <td align="left" valign="middle" class="details-icontxt"><%= link_to_remote "Request More Info", :url=> {:controller=>'home', :action=>'information_flag'}, :with => "'yacht=#{id}'", :complete => "eval(request.responseText)" %></td>
+	                </tr>
+	                <tr>
+	                  <td align="left" valign="middle"><%= link_to_remote image_tag('/images/details-friends-icon.jpg',:width=>"30",:height=>"27",:border=>"0"), :update => 'spansendtofriend', :url => sendtofriend_path, :with => "'yacht_id=#{id.to_s}'", :loading=>"$('overlay').style.display='';$('indicator').style.display='';", :failure=>"$('indicator').style.display='none';alert('send to friend failed!');$('overlay').style.display='none';", :success=>"$('indicator').style.display='none';$('divsendtofriend').style.display='';" %></td>
+	                  <td align="left" valign="middle" class="details-icontxt"><%= link_to_remote "Forward to a Friend", :update => 'spansendtofriend', :url => sendtofriend_path(params[:id]), :with => "'yacht_id=#{id.to_s}&frompage=details'", :loading=>"$('overlay').style.display='';$('indicator').style.display='';", :failure=>"$('indicator').style.display='none';alert('send to friend failed!');$('overlay').style.display='none';", :success=>"$('indicator').style.display='none';$('divsendtofriend').style.display='';" %></td>
+	                </tr>
+	                <tr>
+	                  <td align="left" valign="middle"><a href="#"><img src="/images/finance_insurance.jpg" width="30" height="34" border="0" /></a></td>
+	                  <td align="left" valign="middle" class="details-icontxt"><a href="#">Finance and Insurance</a></td>
+	                </tr>
+	                <tr>
+	                  <td align="left" valign="middle"><a href="#"><img src="/images/shipping-icon.jpg" width="30" height="29" border="0" /></a></td>
+	                  <td align="left" valign="middle" class="details-icontxt"><a href="#">Shipping</a></td>
+	                </tr>
+	              </table></div></td>
+	            </tr>
+	          </table></td>
+          </tr>
+	        <tr>
+	          <td align="left" valign="top"><img src="/images/spacer.gif" width="1" height="30" /></td>
+	        </tr>
+	        <tr>
+	          <td align="left" valign="top"><table width="232" border="0" cellspacing="0" cellpadding="0">
+	            <tr>
+	              <td align="left" valign="middle" class="details-cont-header"><table width="212" border="0" cellspacing="0" cellpadding="0">
+	                <tr>
+	                  <td width="179" align="left" valign="middle">Contact Information:</td>
+	                  <td width="16" align="right" valign="middle">
+	                    <%= link_to_function "<span id='spancontactinfo'>"+image_tag('/images/dashboard-minimise.jpg',:width=>"15",:height=>"15",:border=>"0")+"</span>", "Effect.toggle('divcontactinfo','blind', {duration:0.5});changeImage('spancontactinfo')" %>
+	                  </td>
+	                </tr>
+	              </table></td>
+	            </tr>
+	            <tr>
+	              <td align="left" valign="top"><div id="divcontactinfo" style="display:block"><table width="228" border="0" align="center" cellpadding="0" cellspacing="0">
+	                <tr>
+	                  <td align="left" valign="middle"><img src="/images/spacer.gif" width="1" height="15" /></td>
+	                </tr>
+	                <tr>
+	                  <td align="left" valign="middle" class="details-icontxt">
+	                    <% if not @details.broker.first_name.blank? %>
+	                      <%= @details.broker.first_name %>
+	                    <% end %>
+	                    <% if not @details.broker.last_name.blank? %>
+	                      <%= @details.broker.last_name %>
+	                    <% end %>
+	                  </td>
+	                </tr>
+	                <tr>
+	                  <td align="left" valign="middle" class="details-icontxt">
+	                    <%= @details.broker.company %>
+	                  </td>
+	                </tr>
+	                <tr>
+	                  <td align="left" valign="middle" class="details-icontxt">
+	                    Phone: <%= @details.broker.phone %>
+	                  </td>
+	                </tr>
+	                <tr>
+	                  <td align="left" valign="middle" class="details-icontxt">
+	                    Ext. : <%= @details.broker.extenstion %>
+	                  </td>
+	                </tr>
+	                <tr>
+	                  <td align="left" valign="middle">&nbsp;</td>
+	                </tr>
+	             
+	             <% if @showprofessional.blank? or @showprofessional.usertype != "brokers"%>  
+	               <tr>
+	                 <td align="left" valign="middle">
+	                   <table width="230" border="0" cellspacing="0" cellpadding="0">
+	                     <tr>
+  	                     <td width="37" align="left" valign="top">
+	                         <%= link_to_remote image_tag("/images/details-professional-icon.jpg", :width=>"30", :height=>"31", :border=>"0"), :url => addprofessionalflag_path(@details.broker.id), :complete => "var responsetext = request.responseText.substring(0,5);if (responsetext != 'false'){document.getElementById('spanselectprofession').innerHTML=request.responseText;javascript:loadPopup('selectprofession');}else{javascript:loadPopup('login');}"%>
+	                       </td>
+	                       <td align="left" valign="middle" class="details-icontxt">
+                           <%= link_to_remote "ADD to My Professionals", :url => addprofessionalflag_path(@details.broker.id), :complete => "var responsetext = request.responseText.substring(0,5);if (responsetext != 'false'){document.getElementById('spanselectprofession').innerHTML=request.responseText;javascript:loadPopup('selectprofession');}else{javascript:loadPopup('login');}"%>		                        
+	                       </td>
+	                     </tr>
+	                   </table>
+	                 </td>
+	               </tr>
+	             <% end %>
+	             
+	         
+	                <tr>
+	                  <td align="left" valign="middle">&nbsp;</td>
+	                </tr>
+	                <tr>
+	                  <td align="left" valign="middle" class="details-icontxt">Send me a message</td>
+	                </tr>
+	                 <tr>
+                     <td height="30" align="left" valign="middle"><label>
+	                     <input type="text" name="textfield" id="textfield" />
+	                   </label></td>
+	                 </tr>
+                   <tr>
+        	           <td align="left" valign="top"><img src="/images/send.jpg" width="58" height="23" /></td>
+                   </tr>
+	              </table></div></td>
+	            </tr>
+	          </table></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>

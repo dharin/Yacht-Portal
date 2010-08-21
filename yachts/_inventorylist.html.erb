@@ -1,0 +1,190 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0"> 
+    
+        <tr>
+          <td width="55" align="left" valign="middle" >&nbsp;</td>     
+          <td width="1" align="left" valign="middle" >
+            <img src="/images/mail-header-line.jpg" width="2" height="29" />
+          </td>
+          <td width="20" align="center" valign="middle"> 
+            Name
+          </td>
+          <td width="1" align="left" valign="middle">
+            <img src="/images/mail-header-line.jpg" width="2" height="29" />
+          </td>
+          <td width="40" align="center" valign="middle">
+            Manufacturer
+          </td>
+          <td width="1" align="left" valign="middle">
+            <img src="/images/mail-header-line.jpg" width="2" height="29" />
+          </td>
+          <td width="45" align="center" valign="middle">
+             Model
+          </td>
+          <td width="1" align="left" valign="middle">
+            <img src="/images/mail-header-line.jpg" width="2" height="29" />
+          </td>
+          
+          <td width="20" align="center" valign="middle"> 
+            Year
+          </td>
+    
+          <td width="1" align="left" valign="middle">
+            <img src="/images/mail-header-line.jpg" width="2" height="29" />
+          </td>
+          
+          <td width="40" align="center" valign="middle"> 
+            Length
+          </td>
+    
+          <td width="1" align="left" valign="middle">
+            <img src="/images/mail-header-line.jpg" width="2" height="29" />
+          </td>
+          
+          <td width="40" align="center" valign="middle"> 
+            Hull Material
+          </td>
+    
+          <td width="1" align="left" valign="middle">
+            <img src="/images/mail-header-line.jpg" width="2" height="29" />
+          </td>
+          
+          <td width="85" align="center" valign="middle"> 
+            Price
+          </td>
+    
+          <td width="1" align="left" valign="middle">
+            <img src="/images/mail-header-line.jpg" width="2" height="29" />
+          </td>
+          
+          <td width="10" align="center" valign="middle"> 
+            &nbsp;
+          </td>
+    
+          <td width="1" align="left" valign="middle">
+            <img src="/images/mail-header-line.jpg" width="2" height="29" />
+          </td>
+          
+          <td width="10" align="center" valign="middle"> 
+            &nbsp;
+          </td>
+    
+          <td width="1" align="left" valign="middle">
+            <img src="/images/mail-header-line.jpg" width="2" height="29" />
+          </td>
+          
+          <td width="10" align="center" valign="middle"> 
+            &nbsp;
+          </td>      
+    
+          <td width="1" align="left" valign="middle">
+            <img src="/images/mail-header-line.jpg" width="2" height="29" />
+          </td>
+          
+          <td width="10" align="left" valign="middle"> &nbsp; </td>
+          <td width="1" align="left" valign="middle">
+            <img src="/images/mail-header-line.jpg" width="2" height="29" />
+          </td>
+          
+          <td width="10" align="left" valign="middle"> &nbsp; </td> 
+          <td width="1" align="left" valign="middle">
+            <img src="/images/mail-header-line.jpg" width="2" height="29" />
+          </td>
+          
+          <td width="10" align="left" valign="middle"> &nbsp; </td> 
+          <td width="1" align="left" valign="middle">
+            <img src="/images/mail-header-line.jpg" width="2" height="29" />
+          </td>
+          
+          <td width="5" align="left" valign="middle"> &nbsp; </td>       
+          </tr>
+
+
+
+<!-- <table width="100%" border="0" cellspacing="0" cellpadding="0">  -->
+<% if @yachts.size > 0 %>
+  <% for yacht in @yachts %>
+    <tr>
+      <td width="40" align="center" valign="middle" class="dashboard-grid">
+        <div id="state_image_<%= yacht.id %>">
+        <% if yacht.status=="Active" %>
+          <%= image_tag('/images/active.png',:height=>"20",:width=>"20",:style=>"margin-left:-3px;margin-top:-3px;position:absolute;",:id=>"active_yacht_#{yacht.id}" ) %>
+          <% elsif yacht.status == "Pending"%><%= image_tag('/images/deal_pending.png',:height=>"20",:width=>"20", :style=>"margin-left:-3px;margin-top:-3px;position:absolute;",:id=>"pending_yacht_#{yacht.id}" ) %>
+          <% elsif yacht.status == "Sold"%><%= image_tag('/images/sold1.png',:height=>"20",:width=>"20",:style=>"margin-left:-3px;margin-top:-3px;position:absolute;display:'';",:id=>"sold_yacht_#{yacht.id}" ) %>
+          <% elsif yacht.status == "Inactive"%><%= image_tag('/images/inactive.png',:height=>"20",:width=>"20",:style=>"margin-left:-3px;margin-top:-3px;position:absolute;",:id=>"inactive_yacht_#{yacht.id}" ) %>
+          <% elsif yacht.status == "Archive"%><%= image_tag('/images/archive.png',:height=>"20",:width=>"20",:style=>"margin-left:-3px;margin-top:-3px;position:absolute;",:id=>"archive_yacht_#{yacht.id}" ) %>
+          <% end %>
+          <% if not yacht.photo_small.blank? %>
+          <%= link_to_remote image_tag("/home/show_small_image/#{yacht.id}",:alt=> "image not available", :width=>'45',:height=>'45',:border=>0), :update=> "divgalleryimage", :url=> showgalleryhome_path(Gallery.primaryimage(yacht)), :success=>"$('overlay').style.display='';$('imagegallery').style.display='';" %>
+          <% else %>
+          <%= image_tag("/images/yacht-here.jpg",:alt=> "image not available", :width=>'45',:height=>'45',:border=>0) %>          
+          <% end %> 
+         </div>       
+      </td>
+      <td width="1" align="left" valign="middle" class="dashboard-grid"></td>
+      <td width="20" align="center" valign="middle" class="dashboard-grid">
+        <% if yacht.name %><%= yacht.name %><% else %>&nbsp;<% end %>
+      </td>
+      <td width="1" align="left" valign="middle" class="dashboard-grid"></td> 
+      <td width="20" align="center" valign="middle" class="dashboard-grid">
+        <% if yacht.builder %><%= yacht.builder %><% else %>&nbsp;<% end %>
+      </td>
+      <td width="0" align="left" valign="middle" class="dashboard-grid"></td> 
+      <td width="40" align="center" valign="middle" class="dashboard-grid">
+        <% if yacht.model %><%= yacht.model %><% else %>&nbsp;<% end %>
+      </td>
+      <td width="1" align="left" valign="middle" class="dashboard-grid"></td> 
+      <td width="20" align="center" valign="middle" class="dashboard-grid">
+        <% if yacht.making_year %><%= yacht.making_year %><% else %>&nbsp;<% end %>
+      </td>
+      <td width="1" align="left" valign="middle" class="dashboard-grid"></td> 
+      <td width="40" align="center" valign="middle" class="dashboard-grid">
+        <% if yacht.loa %><%= yacht.loa %><% else %>&nbsp;<% end %>
+      </td>
+      <td width="1" align="left" valign="middle" class="dashboard-grid"></td> 
+      <td width="40" align="center" valign="middle" class="dashboard-grid">
+        <% if yacht.hull_material %><%= yacht.hull_material %><% else %><% end %>
+      </td>
+      <td width="1" align="left" valign="middle" class="dashboard-grid"></td> 
+      <td width="40" align="center" valign="middle" class="dashboard-grid">
+        <% if yacht.price %><%= yacht.price %><% else %>&nbsp;<% end %>
+      </td>
+      
+      <td width="1" align="left" valign="middle" class="dashboard-grid"></td> 
+      <td width="10" align="center" valign="middle" class="dashboard-grid">
+        <%= link_to "Details", previewyachtdetail_path(yacht) %>
+      </td>
+      <td width="1" align="left" valign="middle" class="dashboard-grid"></td> 
+      <td width="10" align="center" valign="middle" class="dashboard-grid">
+        <%= link_to_remote image_tag('/images/sold1.png',:border=>'0', :title=>'Sold'),:url=>setstatus_path,:with => "'id=#{yacht.id}&status=Sold'" %>        
+      </td>    
+      <td width="1" align="left" valign="middle" class="dashboard-grid"></td> 
+      <td width="10" align="center" valign="middle" class="dashboard-grid">
+        <%= link_to_remote image_tag('/images/deal_pending.png',:border=>'0', :title=>'Pending'),:url=>setstatus_path,:with => "'id=#{yacht.id}&status=Pending'" %>
+      </td>    
+      <td width="1" align="left" valign="middle" class="dashboard-grid"></td> 
+      <td width="10" align="center" valign="middle" class="dashboard-grid">
+        <%= link_to_remote image_tag('/images/active.png',:border=>'0', :title=>'Active'),:url=>setstatus_path,:with => "'id=#{yacht.id}&status=Active'"%>
+      </td>
+      <td width="1" align="left" valign="middle" class="dashboard-grid"></td> 
+      <td width="10" align="center" valign="middle" class="dashboard-grid">
+        <%= link_to_remote image_tag('/images/inactive.png',:border=>'0', :title=>'Inactive'),:url=>setstatus_path,:with => "'id=#{yacht.id}&status=Inactive'"%>
+      </td> 
+      <td width="1" align="left" valign="middle" class="dashboard-grid"></td> 
+      <td width="10" align="center" valign="middle" class="dashboard-grid">
+        <%= link_to "Duplicate",duplicateyacht_path(yacht.id) %>
+      </td> 
+      <td width="1" align="left" valign="middle" class="dashboard-grid"></td> 
+      <td width="5" align="center" valign="middle" class="dashboard-grid">
+        <%= link_to image_tag('/images/archive.png',:border=>'0', :title=>'Archive'), yacht, :confirm => 'Are you sure?', :method => :delete %>
+      </td> 
+   
+  
+    </tr>
+  <% end %>
+  <% end %>
+<!-- </table> -->
+
+
+      </table>
+      
+  

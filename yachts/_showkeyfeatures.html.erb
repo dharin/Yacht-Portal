@@ -1,0 +1,15 @@
+<table width="100%">
+      <tr>
+       <td align="left" valign="top" class="details-bullettxt" >
+          <% if !@details.key_selling_features.blank? %>
+            <% @newfeatures = "<ul><li>"+@details.key_selling_features.gsub(', ',',').gsub(',','</li><li>')+"</li></ul>" %>
+            <%= @newfeatures.gsub('<li></li>','') %>
+          <% end %>
+       </td>
+      </tr>
+      <tr>
+        <td align="right" valign="top" class="details-bullettxt" >
+          <%= link_to_remote image_tag('/images/edit01.jpg',:alt=>'Edit',:title=> "Edit",:border=>"0"),:url=>editkeyfeatures_path(@details.id),:loading => visual_effect(:Highlight, 'div_keyfeatures', :duration => 3 ), :complete => visual_effect(:appear, 'div_keyfeatures', :duration => 1), :failure => "alert('You can not add this inventory. Adding Failed.')" %>
+        </td>
+      </tr>
+</table>

@@ -1,0 +1,25 @@
+<span id="spangalleryicon_<%= galleryid.to_s %>" style="display:none;">
+<%= link_to_remote image_tag('/images/set-photo001.jpg', 
+                            :border=>0, :title=> "Set as Primary Image",
+                            :alt=>"Set as Primary Image"), 
+                            :url =>showprimary_path(galleryid),
+                            :with => "'current_id=#{galleryid}'",
+                            :loading=>"$('overlay').style.display='';",
+                            :success=>"$('overlay').style.display='none';",
+                            :failure=>"alert('This image is not set as primary! Please try again.');$('overlay').style.display='none';" 
+%>
+<%= link_to_remote image_tag('/images/view001.jpg', :border=>0, :title=> "View Image", :alt=>"View Image"), :update=> "divgalleryimage", :url=> "/galleries/show/#{galleryid.to_s}", :success=>"$('overlay').style.display='';$('imagegallery').style.display='';" %>
+<%= link_to_remote image_tag('/images/delete001.jpg', 
+                          :border=>0, 
+                          :title=> "Delete Image",
+                          :alt=>"Delete Image"),
+                          :confirm => 'Are you sure?',
+                          :method => :delete,
+                          :url=> removeimage_path(galleryid.to_s), 
+                          :loading=>"$('indicator').style.display='';$('overlay').style.display='';", 
+                          :update=>"mydiv", 
+                          :with=>"'page=#{params[:page]}'", 
+                          :success=>"$('overlay').style.display='none';$('indicator').style.display='none';",
+                          :failure=>"alert('This image can not be deleted! Please try again.');$('overlay').style.display='none';$('indicator').style.display='none';" 
+%>
+</span>

@@ -1,0 +1,58 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left" valign="middle" class="details-cont-header">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="500" align="left" valign="middle" class="details-cont-header">Introduction</td>
+          <td width="100%" align="right" valign="middle">
+             <%= link_to_function "<span id='spanintroduction'>"+image_tag('/images/dashboard-minimise.jpg',:width=>"15",:height=>"15",:border=>"0")+"</span>", "Effect.toggle('divintroduction','blind', {duration:0.5});changeImage('spanintroduction')" %>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <% if not @details.description.blank? %>
+    <tr>
+      <td align="left" valign="top" class="normal-content"><div id ="divintroduction" style="padding:10px;"><%= @details.description %></div></td>
+    </tr>
+  <% end %>
+    <tr>
+      <td align="left" valign="top" class="normal-content">&nbsp;</td>
+    </tr>
+</table>
+
+<%- for extradetails in @details.additionaldetails -%>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left" valign="middle" class="details-cont-header">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+       <tr>
+         <% if not extradetails.blank? %> <td width="50%" align="left" valign="middle"><%= extradetails.title %></td><% end %>
+         <td width="100%" align="right" valign="middle">
+            <%= link_to_function "<span id='span_#{extradetails.id}'>"+image_tag('/images/dashboard-minimise.jpg',:width=>"15",:height=>"15",:border=>"0")+"</span>", "Effect.toggle('divadditionaldetails_#{extradetails.id.to_s}','blind', {duration:0.4});changeImage('span_#{extradetails.id}')" %>
+         </td>
+       </tr>
+      </table>
+    </td>
+  </tr> 
+  
+  <%- if not extradetails.description.blank? -%>
+  <tr>
+    <td align="left" valign="top" class="normal-content">
+     <div id ="divadditionaldetails_<%= extradetails.id %>" style="padding:10px;">
+       <%= render :partial=>'/yachts/showadditionaldetails',:locals=>{:id=>extradetails.id} %>
+     </div>
+    </td>
+  </tr>
+  <%- end -%>
+  <tr>
+    <td align="left" valign="top" class="normal-content">&nbsp;</td>
+  </tr>
+</table>
+<%- end -%>
+
+
+
+
+
+  

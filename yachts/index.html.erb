@@ -1,0 +1,47 @@
+<td align="left" valign="top" class="yachtlist-bg">
+<div id="overlay" style="display: none;"> </div>	
+<div id = "quickadd" class="dialogue" style="display: none;">
+	<div id="close"><a href="javascript: void(0);" onclick="closeQuickAdd('quickadd')"><%= image_tag('/images/cross.gif', :border=> 0) %></a></div>
+   <%= render_component(:action => "quickadd", :controller => "yachts", :params => {:authenticity_token => form_authenticity_token()}) %>
+</div>
+<div id = "imagegallery" class="dialogue" style="display:none;margin-left:-350px;margin-top:160px;z-index:5000">
+  <div id="close"><a href="javascript: void(0);" onclick="closeDialoguePopup('imagegallery');"><%= image_tag('/images/cross.gif', :border=> 0) %></a></div>
+  <div id="divgalleryimage"></div>
+</div>
+
+<table width="980" border="0" cellspacing="0" cellpadding="0">
+<tr>
+  <td align="right" valign="middle" class="lightblue-header"><%= link_to image_tag('/images/new-yachts-butt.jpg', :width=>84, :height=>24, :border=>0), 'javascript:void(0);', :onClick => "loadPopup('quickadd');" %></a></td>
+</tr>
+<!-- **************************** -->
+
+ 
+ <tr>
+   
+    <td align="left" valign="middle" class="dashboardmail-searchresult">
+    <div id= "yachtstatuslist">      
+     <%= render :partial=>'/yachts/inventorylist'%>
+    </div>    
+   </td>
+    
+      
+  </tr>
+  
+  
+
+<!-- ******************************* -->
+<tr>
+  <td align="left" valign="middle" class="lightblue-header"><table width="400" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td align="left" valign="middle" class="yachtlist-page-no"><%= will_paginate @yachts %></td>
+    </tr>
+  </table></td>
+</tr>
+
+
+</table>
+
+</td>
+
+
+

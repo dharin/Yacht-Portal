@@ -1,0 +1,16 @@
+<%- form_for 'gallery', :action=> newcaption_path(id), :id => 'gallery_form_#{id}' do |f| -%>
+  <div>
+    <%= f.text_field :caption, :value=> caption, :size=>"15", :maxlength=>"25", :id=>"gallery_caption_#{id.to_s}", :onblur=>"document.getElementById('txtgalleries_#{id.to_s}').style.display='none';document.getElementById('div_gallery_#{id.to_s}').style.display='';" %>
+    
+    <%= observe_field 'gallery_caption_'+id.to_s,
+      :update => "div_gallery_#{id}",
+      :loading=>"$('indicator').style.display='';$('overlay').style.display='';",
+      :on => "blur",
+      :url=> newcaption_path(id),
+      :with=> "'txt_caption='+escape($('gallery_caption_#{id.to_s}').value)" ,
+      :complete=>"$('indicator').style.display='none';$('overlay').style.display='none';", 
+      :failure=>"alert('add/edit caption failed!');$('indicator').style.display='none';$('overlay').style.display='none';" %>
+
+  </div>
+  <%= f.submit 'Submit', :id => 'submit_#{id.to_s}', :style=>"display:none;" %>
+<%- end -%>

@@ -1,0 +1,17 @@
+<ul>
+  <% if session[:tabdetail] == 'specification'  -%>
+  <li class="current_page_item"><%= link_to_remote 'Principal Feature & Specification', :url=>yachtdetailviewtab_path(params[:id]), :with=>"'tabdetail=specification'", :update=>'detailviewpage' %></li>
+  <% else -%>
+  <li><%= link_to_remote 'Principal Feature & Specification', :url=>yachtdetailviewtab_path(params[:id]), :with=>"'tabdetail=specification'", :update=>'detailviewpage' %></li>
+  <% end -%>
+  <% if session[:tabdetail] == 'additional'  -%>
+  <li class="current_page_item"><%= link_to_remote 'Additional Details', :url=>yachtdetailviewtab_path(params[:id]), :with=>"'tabdetail=additional'", :update=>'detailviewpage' %></li>
+  <% else -%>
+  <li><%= link_to_remote 'Additional Details', :url=>yachtdetailviewtab_path(params[:id]), :with=>"'tabdetail=additional'", :update=>'detailviewpage' %></li>
+  <% end -%>
+  <% if session[:tabdetail] == 'gallery'  -%>
+  <li class="current_page_item"><%= link_to_remote 'Gallery', :url=>yachtdetailviewtab_path(params[:id]), :with=>"'tabdetail=gallery'", :update=>'detailviewpage' %></li>
+  <% else -%>
+  <li><%= link_to_remote 'Gallery', :url=>yachtdetailviewtab_path(params[:id]), :with=>"'tabdetail=gallery'", :update=>'detailviewpage' %></li>
+  <% end -%>
+</ul>

@@ -1,0 +1,74 @@
+<div>
+	<div id="overlay" style="display: none;"> </div>	
+	<div id = "additionaldetails" class="dialogue" style="display:none;">
+		<div id="close"><a href="javascript: void(0);" onclick="closeQuickAdd('additionaldetails')"><%= image_tag('/images/cross.gif', :border=> 0) %></a></div>
+    <div id="edit_form_details"></div>
+	</div>
+  <div id = "editimage" class="dialogue" style="display:none;left:50%;top:40%;">
+    <div id="close"><a href="javascript: void(0);" onclick="closeDialoguePopup('editimage');"><%= image_tag('/images/cross.gif', :border=> 0) %></a></div>
+    <div id="diveditimage"></div>
+  </div>
+</div>
+<% form_remote_tag :url => updateinfo_path(session[:yachtid]), :before => "$('divmessage').style.display = '';", :update => 'inventoryform', :loading => visual_effect(:fade, 'divyachtinformation', :duration => 1 ), :complete => visual_effect(:appear, 'divyachtinformation', :duration => 1), :failure => "alert('You can not add this inventory. Adding Failed.')"  do %>
+<table width="980" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left" valign="top">
+      <table width="980" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="left" valign="top" class="register-header">Add/Edit Inventory Information</td>
+      </tr>
+      <tr>
+        <td height="25">
+          <img src="/images/spacer.gif" width="10" height="1" />
+          <span id="divmessage" style="display:none;background-color:yellow;width:60px;">Saving...</span>
+        </td>
+      </tr>
+      <tr>
+        <td align="left" valign="top" class="yacht-details-bg">
+          <table width="965" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" valign="top">
+              <table width="965" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="left" valign="top" class="tab">
+                  <%= render :partial => '/controls/inventorytab' %></td>
+              </tr>
+              <tr>
+                <td align="left" valign="top" class="yacht-details-cont-bg" style="<% if session[:yachtmode] == 'Gallery' || session[:yachtmode] == 'Additional Details' %>padding:0px;<% end %>" >
+                  <%= render :partial => '/controls/inventorypage' %>
+                </td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top">&nbsp;</td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+
+ <script type="text/javascript">
+ 	function addintotextbox(id,value)
+ 	{
+ 	  var values = id.replace(/_/g, ' ');
+ 		if(document.getElementById(id).checked)
+ 		{
+ 		  if (document.getElementById('yacht_key_selling_features').value == ''){
+ 		    document.getElementById('yacht_key_selling_features').value = id;
+ 		  }
+ 		  else{
+ 			  document.getElementById('yacht_key_selling_features').value = document.getElementById('yacht_key_selling_features').value + "," + values;
+ 			}
+ 		}
+ 		else
+ 		{
+ 		  var replacevalue1= ","+values;
+ 		  var replacevalue2= values+",";
+ 		  document.getElementById('yacht_key_selling_features').value = document.getElementById('yacht_key_selling_features').value.replace(replacevalue1,"");
+ 		  document.getElementById('yacht_key_selling_features').value = document.getElementById('yacht_key_selling_features').value.replace(replacevalue2,"");
+ 		}		
+ 	}		
+ </script>
+<% end -%>

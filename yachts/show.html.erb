@@ -1,0 +1,136 @@
+<table width="600px">
+  <tr>
+    <td>
+      <%= image_tag("/yachts/show_image/#{params[:id]}", :alt => "Image not available") %>    
+    </td>
+    <td>
+     <table>
+       <tr>
+         <td>
+            <h2>Year:<%=h @yacht.making_year %></h2>
+         </td>
+       </tr>
+       <tr>
+         <td>
+           <h2>Engine maker:<%#=h @yacht.engine_maker.name %></h2>
+         </td>
+       </tr>
+       <tr>
+         <td>
+            <h2>Model name:<%=h @yacht.model %></h2>
+         </td>
+       </tr>
+     </table>    
+  </tr>
+  <tr>
+    <td height="100px">
+     <table style="margin-top:-180px;">
+      <tr>
+        <td>
+         <h3>Key features:</h3>
+         <%#=h @yacht.key_features %>
+        </td>
+      </tr>
+   </table>     
+    </td>
+    <td>
+     <table>
+      <tr>
+        <td>
+         <h3>Spcification:</h3>
+        </td>
+      </tr>
+      <tr>
+        <td>
+           <b>Length:</b>
+           <%#=h @yacht.length %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+           <b>Beam:</b>
+           <%#=h @yacht.beam %>
+        </td>
+      </tr>
+      <tr>
+       <td>
+          <b>Draft:</b>
+          <%#=h @yacht.draft %>
+       </td>
+      </tr>
+      <tr>
+        <td>
+           <b>Weight:</b>
+           <%=h @yacht.weight %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Fuel capacity:</b>
+          <%#=h @yacht.fuel_capacity %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Water capacity:</b>
+          <%#=h @yacht.water_capacity %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+           <b>Holding Capacity:</b>
+           <%#=h @yacht.holding_tank %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Crusing speed:</b>
+          <%#=h @yacht.crusing_speed %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Max speed:</b>
+          <%#=h @yacht.max_speed %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Range</b>
+          <%=h @yacht.range %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+           <b>Engine</b>
+           <%=h @yacht.engine_model %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Total HP</b>
+          <%#=h @yacht.horsepower %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Cabins:</b>
+          <%#=h @yacht.cabins %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Berths:</b>
+          <%#=h @yacht.berths %>
+        </td>
+      </tr>
+      
+     </table>
+    </td>   
+  </tr>
+  </table>
+
+<% if !session[:id].blank? %>
+  <%= link_to 'Edit', edit_yacht_path(@yacht) %> |
+  <%= link_to 'Back', yachts_path %>
+<% end %>
